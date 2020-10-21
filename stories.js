@@ -45,3 +45,7 @@ const stories = [
     }
   }
 ]
+
+for (let word of stories[0].words){
+  console.log(`<input type='text name='${word.split(' ').join('')}'>`)
+}
