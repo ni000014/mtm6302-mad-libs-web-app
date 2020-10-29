@@ -3,11 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mad Libs</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
 </head>
 <body>
+    <h1>MadLab</h1>
     
+    <div class='container'>  
+        <h2>Step1: choose a story</h2> 
+        <button id='mission'></button>
+        <button id='lunch'></button>
+        <button id='weather'></button>
+    </div>
 
+    <div class='formContainer'>
+        <h2>Step2: Provide the following words:</h2>
+        <form>    
+        </form>
+        <button type='submit' id='read'>Read Story</button>
+    </div>
+
+    <div class='final'>
+        <h2 id='name'></h2>
+        <div id='finished'></div>
+        <button type='submit' id='another'>Create Another Story</button>
+    </div>
+    
     <script src="stories.js"></script>
 </body>
 </html>

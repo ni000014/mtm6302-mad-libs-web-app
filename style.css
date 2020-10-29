@@ -1,0 +1,129 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*reset done*/
+
+
+
+html{
+    font-family: 'Gloria Hallelujah', cursive;
+    background-color: #CFFAFE; 
+}
+
+h1{
+    background-color: #EBCA6C;  
+    padding:30px 50px;  
+    margin:0;
+    font-size:35px;
+}
+
+h2{
+    font-size: 25px;
+    background-color: #9b85bdb0;
+}
+
+/*style the container for choose a story*/ 
+/*stryle formContainer*/
+.container, .formContainer, .final{
+    padding:10px 50px;
+}
+
+button, .formContainer input{
+    display:flex;
+    margin:50px auto;
+    background-color: #E79289;
+    border:none;
+    border-radius:50px;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size:20px;
+    padding:20px 40px;
+    cursor:pointer;
+    outline:none;
+}
+button:hover{
+    background-color:#EBCA6C;
+}
+
+input{
+    display:flex;
+}
+
+.formContainer{
+    visibility: hidden;
+}
+
+.formContainer.on{
+    visibility: visible;
+}
+
+.final{
+    visibility: hidden;
+}
+.final.on{
+    visibility: visible;
+}
+
+/*style form-container input */
+.formContainer input{
+    background-color:  #EBCA6C;
+    border-radius:0;
+    width:60%;
+}
+
+.formContainer input:hover, .formContainer input:focus{
+    background-color:  #E79289;
+}
+
+/*style finished*/
+#finished{
+    background-color: #EBCA6C;
+    margin:50px 50px;
+    padding:50px;
+}
+
+

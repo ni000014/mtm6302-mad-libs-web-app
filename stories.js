@@ -46,6 +46,159 @@ const stories = [
   }
 ]
 
-for (let word of stories[0].words){
-  console.log(`<input type='text name='${word.split(' ').join('')}'>`)
+// for (let word of stories[0].words){
+//   console.log(`<input type='text' name='${word.split(' ').join('')}'>`)
+// }
+
+
+
+
+//put story titles into the buttons 
+const $button = document.querySelectorAll('button')
+//console.log($button)
+for (let i=0; i<stories.length; i++){  
+  $button[i].textContent=stories[i].title  
 }
+
+//insert inputs into the form  (using if...else or switch)
+/*
+const $form = document.querySelector('form')
+let inputs= []
+
+function switchForm(type){
+  inputs = []
+  if (type === 'missionWords'){
+    for (let word of stories[0].words){
+      inputs.push(`<input type='text name='${word}' placeholder='${word}'>`)
+    } 
+    $form.innerHTML= inputs.join('')
+    console.log('hi1')
+  } else if (type === 'lunchWords'){
+      for (let word of stories[1].words){
+        inputs.push(`<input type='text name='${word}' placeholder='${word}'>`)
+      } 
+      $form.innerHTML= inputs.join('')
+      console.log('hi2')
+    } else if (type === 'weatherWords'){
+        for (let word of stories[2].words){
+        inputs.push(`<input type='text name='${word}' placeholder='${word}'>`)
+        } 
+        $form.innerHTML= inputs.join('')
+        console.log('hi3')
+      }
+}
+*/
+
+$form = document.querySelector('form')
+$container = document.querySelector('.container')
+$formContainer = document.querySelector('.formContainer')
+$final=document.querySelector('.final')
+let inputs=[]
+let outputWords = {}
+let typeFlag;
+
+function addForm(type){
+  inputs = []
+  typeFlag = type
+  console.log(typeFlag)
+  switch (type){
+    case 'missionWords':
+      for (let word of stories[0].words){ 
+        inputs.push(`<input type='text' name='${word}' placeholder='${word}' id='${word.split(' ').join('')}'>`)
+      } 
+      $form.innerHTML= inputs.join('')
+      break;
+    case 'lunchWords':
+      for (let word of stories[1].words){
+        inputs.push(`<input type='text' name='${word}' placeholder='${word}' id='${word.split(' ').join('')}'>`)
+      } 
+      $form.innerHTML= inputs.join('')  
+      break;
+    case 'weatherWords':
+      for (let word of stories[2].words){
+        inputs.push(`<input type='text' name='${word}' placeholder='${word}' id ='${word.split(' ').join('')}'>`)
+        } 
+        $form.innerHTML= inputs.join('')
+        break;
+    default:
+      console.log("something wrong with switch")
+      }
+}
+
+
+document.getElementById('mission').addEventListener('click',function(){
+  addForm('missionWords')
+  $formContainer.classList.toggle('on')
+})
+document.getElementById('lunch').addEventListener('click',function(){
+  addForm('lunchWords')
+  $formContainer.classList.toggle('on')
+})
+document.getElementById('weather').addEventListener('click',function(){
+  addForm('weatherWords')
+  $formContainer.classList.toggle('on')
+})
+
+
+//create and read story using switch
+document.getElementById('read').addEventListener('click',provide)
+
+function provide(){
+  switch (typeFlag) {
+    case 'missionWords':
+      outputWords = {
+        'Adjective': document.getElementById('Adjective').value,
+        'Verb 1': document.getElementById('Verb1').value,
+        'Verb 2': document.getElementById('Verb2').value,
+        'Plural Noun 1': document.getElementById('PluralNoun1').value,
+        'Plural Noun 2': document.getElementById('PluralNoun2').value,
+        'Plural Noun 3': document.getElementById('PluralNoun3').value
+      }
+      document.getElementById('finished').innerHTML=stories[0].output(outputWords)
+      document.getElementById('name').textContent=stories[0].title
+      $final.classList.toggle('on')
+      break;
+    case 'lunchWords':
+      outputWords = {
+        'Animal': document.getElementById('Animal').value,
+        'Adjective 1': document.getElementById('Adjective1').value,
+        'Adjective 2': document.getElementById('Adjective2').value,
+        'Vegetable 1': document.getElementById('Vegetable1').value,
+        'Vegetable 2': document.getElementById('Vegetable2').value,
+        'Noun': document.getElementById('Noun').value,
+        'Container': document.getElementById('Container').value
+      }
+      document.getElementById('finished').innerHTML=stories[1].output(outputWords)
+      document.getElementById('name').textContent=stories[1].title
+      $final.classList.toggle('on')
+      break;
+    case 'weatherWords':
+      outputWords = {
+        'Adjective 1': document.getElementById('Adjective1').value,
+        'Adjective 2': document.getElementById('Adjective2').value,
+        'Article of Clothing': document.getElementById('ArticleofClothing').value,
+        'Number 1': document.getElementById('Number1').value,
+        'Number 2': document.getElementById('Number2').value,
+        'Plural Noun 1': document.getElementById('PluralNoun1').value,
+        'Plural Noun 2': document.getElementById('PluralNoun2').value
+      }
+      document.getElementById('finished').innerHTML=stories[2].output(outputWords)
+      document.getElementById('name').textContent=stories[2].title
+      $final.classList.toggle('on')
+      break;  
+    default:
+      break;
+  }
+}
+//since all of my buttons are outside of the forms, no page refresh happens 
+//event.preventDefault() not necessary
+
+//create another story ,return to the first form 
+document.getElementById('another').addEventListener('click',function(event){
+  $final.classList.toggle('on')
+  $formContainer.classList.toggle('on')
+  window.scrollTo(0, 0); 
+})
+//event.preventDefault() not necessary
+
+
